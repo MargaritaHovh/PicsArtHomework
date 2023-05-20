@@ -1,0 +1,150 @@
+1.       Abstract Classes and Methods:
+
+    ! Create an abstract class Shape with an abstract method area().
+    ! Implement concrete classes Circle and Rectangle that inherit from Shape and implement the area() method.
+    ! Create an instance of each class and print its area.
+    
+import abc
+class Shape(abc.ABC):
+    @abc.abstractmethod
+    def area(self):
+        pass
+
+class Circle(Shape):
+    def __init__(self,radius):
+        self.radius=radius
+        
+    def area(self):
+        return 3.14*self.radius*self.radius
+    
+    
+class Rectangle(Shape):
+    def __init__(self,len,width):
+        self.len=len
+        self.width=width
+    def area(self):
+        return self.len*self.width
+        
+circle = Circle(2)
+rectangle= Rectangle(3,4)
+circle_area=circle.area()
+rectangle_area=rectangle.area()
+print("Circle area is ", circle_area)
+print("Rectangle area is ", rectangle_area)
+
+
+
+2.    Class and Static Methods:
+
+    ! Create a class Math with class methods add() and multiply(), and a static method square().
+    ! Implement the methods to perform their respective operations on two numbers.
+    ! Create a program that uses the Math class to add, multiply, and square some numbers.
+
+class Math:
+    @classmethod
+    def add(cls,x,y):
+        return x+y
+        
+    @classmethod
+    def mul(cls,x,y):
+        return x*y
+        
+    @staticmethod
+    def square(x):
+        return x*x
+
+print(Math.add(2,3))
+print(Math.mul(2,3))
+print(Math.square(2))
+    
+    
+    
+3.    Properties:
+
+    ! Create a class Person with properties name and age.
+    ! Implement methods to set and get the values of the properties.
+    ! Create a program that creates a Person object, sets its name and age, and then prints its values.
+    
+class Person:
+    def __init__(self,name,age):
+        self._name=name
+        self._age=age
+        
+    def get_name(self):
+        return self._name
+    def set_name(self,name):
+        self._name=name
+    
+    def get_age(self):
+        return self._age
+    def set_age(self,age):
+        if age>=0:
+            self._age=age  
+        else:
+            print("Age cant be negative")
+            
+        
+obj=Person("Ana",20)
+print(obj.get_name())
+print(obj.get_age())
+
+obj.set_name("Bob")
+obj.set_age(10)
+print(obj.get_name())
+print(obj.get_age())
+
+
+
+4.    Interfaces:
+
+    ! Create an interface IAnimal with methods speak() and eat().
+    ! Implement classes Cat and Dog that implement the IAnimal interface.
+    ! Create a program that creates objects of each class and calls their speak() and eat() methods.
+
+
+class Animal:
+    def speak(self):
+        pass
+    def eat(self):
+        pass
+    
+class Cat(Animal):
+    def speak(self):
+        return "Meow"
+    def eat(self):
+        return "Cat is eating"
+        
+class Dog(Animal):
+    def speak(self):
+        return "Haf"
+    def eat(self):
+        return "Dod is eating"
+    
+cat=Cat()
+print(cat.speak(),",",cat.eat())
+dog=Dog()
+print(dog.speak(),",",dog.eat())
+    
+    
+    
+5.    Metaclasses:
+
+    ! Create a metaclass MyMeta that prints a message whenever a new class is created.
+    ! Define a class MyClass that uses the MyMeta metaclass.
+    ! Create an instance of MyClass and observe the message printed by the MyMeta metaclass.
+    
+    
+class MyMeta(type):
+    def __new__(cls,name,bases,attrs):
+        print(f"Creating a new class: {name}")
+        return super().__new__(cls,name,bases,attrs)
+        
+class MyClass(metaclass=MyMeta):
+    pass
+obj=MyClass()
+
+
+
+
+
+
