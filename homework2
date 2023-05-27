@@ -1,0 +1,75 @@
+1.Իրականացնել Vector կլասը, որը մաթեամտիկական վեկտորի ֆունկցիոնալությունը պետք է ապահովի (օգտագործել opertors.txt ֆայլում առկա բոլոր օպերատորները)։ 
+
+class Vector:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+        
+    def __neg__(self):
+        return Vector(-self.x, -self.y)
+        
+    def __eq__(self,other):
+        return self.x == other.x and self.y == other.y
+        
+    def __add__(self,other):
+        x = self.x + other
+        y = self.y + other
+        return Vector(x,y)
+        
+    def __str__(self):
+        return f"({self.x},{self.y})"
+        
+    def __repr__(self):
+        return f"Vector({self.x}, {self.y})"
+    
+    def __contains__(self, item):
+        return item == self.x or item == self.y
+
+        
+coordinates = Vector(10, 1)
+print(coordinates)
+
+
+
+
+
+
+
+2. Իրականացնել հրատարակչական ընկերություն (publishing company), որը շուկա է հանում իր արտադրանքը և' գրքերի, և' ձայներիզների տեսքով։ Ստեղծել publication կլասը, որը պետք է պահպանի հրապարակման վերնագիրը(title: string) և գինը(price: int)։ Այս կլասից պետք է ժառանգել երկու կլաս՝ Book, որն ավելացնում է էջերի քանակը(count_of_pages: int) և Tape, որն ավելացնում է ձայներիզի կատարման ժամանակը ներկայացված րոպեներով(playing_time: int)։ Յուրաքանչյուր կլաս պետք է ունենա setData() մեթոդ, որը համաապատսխանաբար կմուտքագրի տվյալներ և getData(), որը կպատկերի այդ տվյալները։ Գրել main ծրագիր, որտեղ կստեղծվեն գրքի և ժապավենի էկզեմպլյարներ և կկիրառվեն համապատասխան ֆունկցիոնալությունները (օգտագործելով պոլիմորֆիզմ)։
+
+
+class Publication():
+    def setData(self, title, price):
+        self.title = title
+        self.price = price
+        
+    def getData(self):
+        print(f"Title: {self.title}")
+        print(f"Price: {self.price}")
+        
+        
+class Book(Publication):
+    def setData(self, title, price, count_of_pages):
+        super().setData(title, price)
+        self.count_of_pages = count_of_pages
+        
+    def getData(self):
+        super().getData()
+        print(f"Count of pages: {self.count_of_pages}")
+    
+class Tape(Publication):
+    def setData(self, title, price, playing_time):
+        super().setData(title, price)
+        self.playing_time = playing_time
+        
+    def getData(self):
+        super().getData()
+        print(f"Playing time: {self.playing_time}")
+    
+book = Book()
+book.setData("Adventure", 2500, 344)
+book.getData()
+print()
+tape = Tape()
+tape.setData("Fantasy", 4600, 30)
+tape.getData()
