@@ -1,0 +1,145 @@
+1.
+class Piece:
+    def valid_move(self, source, destination):
+        pass
+    def choose_piece():
+        pass
+        
+class Board:
+    def __init__(self):
+        self.board = [['r', 'k', 'b', 'q', 'a', 'b', 'k', 'r'],
+                      ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'],
+                      ['_', '_', '_', '_', '_', '_', '_', '_'],
+                      ['_', '_', '_', '_', '_', '_', '_', '_'],
+                      ['_', '_', '_', '_', '_', '_', '_', '_'],
+                      ['_', '_', '_', '_', '_', '_', '_', '_'],
+                      ['P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'],
+                      ['R', 'K', 'B', 'Q', 'A', 'B', 'K', 'R']]
+        self.colors = ["black", "white"]
+        self.pieces = ["Pawn", "Rook", "Knight", "Bishop", "Queen", "King"]
+    def print_board(self):
+        for row in self.board:
+            print(row)
+
+    def menu(self):
+        print("Please choose the color")
+        for i, color in enumerate(self.colors):
+            print(i,color)
+        color_choice = int(input("Enter the number for youre color: "))
+        self.selected_color = self.colors[color_choice]
+        print("Youre color is", self.selected_color)
+        
+        print("Please choose the piece")
+        for i, piece in enumerate(self.pieces):
+            print(i,piece)
+        piece_choice = int(input("Enter the number for youre piece: "))
+        self.selected_piece = self.pieces[piece_choice].choose_piece()
+        
+class Pawn(Piece):
+    def __init__(self,color):
+        if self.selected_color == "white":
+            self.symbol == "P"
+        self.symbol == "p"
+        
+    def valid_move(self, source, destination):
+        pass
+    
+    def choose_piece():
+        return Pawn()
+
+class Rook(Piece):
+    def valid_move(self, source, destination):
+        pass
+
+class Knight(Piece):
+    def valid_move(self, source, destination):
+        pass
+
+class Bishop(Piece):
+    def valid_move(self, source, destination):
+        pass
+
+class Queen(Piece):
+    def valid_move(self, source, destination):
+        pass
+
+class King(Piece):
+    def valid_move(self, source, destination):
+        pass
+obj = Board()
+obj.print_board()
+obj.menu()
+
+
+
+
+2.
+class Validation:
+    def choosing_data(self):
+        print("Please choose the number of data you want to check")
+        self.data = ["Email", "Website URL", "Date", "Number", "Credit Card Number",
+        "Mobile Phone Number" ]
+        for i, data in enumerate(self.data):
+            print(i,data)
+        choosed_data = int(input("Enter youre number: "))
+        
+        if choosed_data == 0:
+            email = input("Enter youre email: ")
+            self.email_validation(email)
+        elif choosed_data == 1:
+            url = input("Enter the website URL: ")
+            self.website_validation(url)
+        elif choosed_data == 2:
+            date = input("Enter the date: ")
+            self.date_validation(date)
+        elif choosed_data == 3:
+            number = int(input("Enter the number: "))
+            self.number_validation(number)
+        elif choosed_data == 4:
+            card_number = input("Enter the credit card number: ")
+            self.card_validation(card_number)
+        elif choosed_data == 5:
+            phone_number = input("Enter the mobile phone number: ")
+            self.phone_validation(phone_number)
+        else:
+            print("Enter any of the numbers listed")
+        
+    def email_validation(self, email):
+        if email.endswith(("@gmail.com", "@mail.ru")):
+            print("Youre email is valid !")
+        else:
+            print("Email is not valid.")
+        
+    def website_validation(self, url):
+        if url.startswith(("http://", "https://")):
+            print("Website is valid !")
+        else:
+            print("Website is not valid.")
+        
+    def date_validation(self, date):
+        if date == "05.06.2023":
+            print("Date is valid !")
+        else:
+            print("Date is not valid !")
+        
+    def number_validation(self, number):
+        if number % 2 == 0:
+            print("Number is valid !")
+        else:
+            print("Number is not valid !")
+        
+    def card_validation(self, card_number):
+        if card_number[0:4].isdigit() and card_number[5:9].isdigit() and card_number[4] == "-":
+            print("Card Number is valid !")
+        else:
+            print("Card Number is not valid !")
+    
+    def phone_validation(self, phone_number):
+        if len(phone_number) == 12 and phone_number.startswith("+374"):
+            print("Phone number is valid !")
+        else:
+            print("Phone number is not valid !")
+
+obj = Validation()
+obj.choosing_data()
+        
